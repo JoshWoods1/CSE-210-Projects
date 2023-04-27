@@ -38,8 +38,7 @@ class Program
         }
 
         DisplayMessage();
-        int number = SquareNumber(PromptUserNumber());
-        DisplayResult(PromptUserName(), number);
+        DisplayResult(PromptUserName(), SquareNumber(PromptUserNumber()));
 
     }
 }
