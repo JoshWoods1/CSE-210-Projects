@@ -1,19 +1,12 @@
 public class Prompt 
 {
-    List<string> _prompts = new List<string>();
+    public string _prompt;
+    public DateTime _date;
 
-    public Prompt()
+    public Prompt(string prompt, DateTime date)
     {
-
+        _date = date;
+        _prompt = prompt;
     }
 
-    public string PickRandomPrompt()
-    {
-        return "this is the prompt";
-    }
-
-    public void AddPrompt()
-    {
-
-    }
 }

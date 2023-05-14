@@ -1,16 +1,16 @@
 public class Entry{
 
-    public string _prompt;
+    public Prompt _prompt;
 
     public DateTime _date;
 
     public string _text;
 
-
-
-    public string EnterText()
+    public Entry(Prompt prompt, DateTime date, string text)
     {
-        return _text;
+        _prompt = prompt;
+        _date = date;
+        _text = text;
+        
     }
-
 }
