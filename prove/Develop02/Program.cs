@@ -9,11 +9,7 @@ public class Program
     {
         List<Prompt> _prompt = new List<Prompt>();
         {
-            new Prompt("What was the best part of your day?", DateTime.Now);
-            new Prompt("How did your day make you feel?", DateTime.Now);
-            new Prompt("What would you have changed about today", DateTime.Now);
-            new Prompt("What about today was special?", DateTime.Now);
-            new Prompt("If you could have done anything you wanted today, what would you have done?", DateTime.Now);
+
         }
 
         bool running = true;

@@ -12,9 +12,12 @@ public class Journal
 
      public void AddEntry(Prompt prompt, string text)
     {
+        Console.WriteLine("---------------------------");
             Entry entry = new Entry(prompt, DateTime.Now, text);
+        Console.WriteLine("---------------------------");
 
         _Entries.Add(entry);
+
     }
 
     public void DisplayEntries()
@@ -47,7 +50,7 @@ public class Journal
             string promptText = parts[1];
             string text = parts[2];
 
-            Prompt prompt = new Prompt(promptText, DateTime.Now);
+            Prompt prompt = new Prompt();
             Entry entry = new Entry(prompt, DateTime.Parse(date), text);
             loadedEntries.Add(entry);
             _Entries = loadedEntries;
