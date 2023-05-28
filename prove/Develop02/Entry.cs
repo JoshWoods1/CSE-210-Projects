@@ -1,16 +1,21 @@
 public class Entry{
 
-    public Prompt _prompt;
+    public string _prompt;
 
-    public DateTime _date;
+    public string _date;
 
     public string _text;
 
-    public Entry(Prompt prompt, DateTime date, string text)
+    public Entry()
+    {        
+    }
+
+    public void Display()
     {
-        _prompt = prompt;
-        _date = date;
-        _text = text;
-        
+        Console.WriteLine($"Date:{_date}");
+        Console.WriteLine($"Prompt:{_prompt}");
+        Console.WriteLine($"Entry:{_text}");
+
+
     }
 }

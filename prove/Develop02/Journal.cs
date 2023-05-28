@@ -2,29 +2,25 @@ using System.IO;
 
 public class Journal
 {
-    public List<Entry> _Entries;
-
+    public List<Entry> _Entries = new List<Entry>();
+    private string _fileName;
 
     public Journal()
     {
-        _Entries = new List<Entry>();
     }
 
-     public void AddEntry(Prompt prompt, string text)
+    public void AddEntry(Entry entry)
     {
-        Console.WriteLine("---------------------------");
-            Entry entry = new Entry(prompt, DateTime.Now, text);
-        Console.WriteLine("---------------------------");
-
         _Entries.Add(entry);
-
     }
-
-    public void DisplayEntries()
+     public void Display()
     {
-        foreach (Entry entry in _Entries){
-        Console.WriteLine($"Date: {entry._date}\n{entry._prompt}\n {entry._text}");
+        Console.WriteLine("---------------------------");
+    foreach(Entry entry in _Entries)
+    {
+        entry.Display();
     }
+        Console.WriteLine("---------------------------");
     }
 
     public void SaveJournal(string filename)
@@ -51,10 +47,43 @@ public class Journal
             string text = parts[2];
 
             Prompt prompt = new Prompt();
-            Entry entry = new Entry(prompt, DateTime.Parse(date), text);
+            Entry entry = new Entry();
             loadedEntries.Add(entry);
             _Entries = loadedEntries;
         }
     }
+    // public void LoadFromFile(string filename)
+    // {
+    //     _Entries.Clear();
+
+    //     using (StreamReader reader = new StreamReader(filename))
+    //     {
+    //         string line;
+    //         string prompt = null;
+    //         string response = null;
+    //         DateTime date = DateTime.MinValue;
+
+    //         while ((line = reader.ReadLine()) != null)
+    //         {
+    //             if (prompt == null)
+    //             {
+    //                 prompt = line;
+    //             }
+    //             else if (response == null)
+    //             {
+    //                 response = line;
+    //             }
+    //             else
+            //     {
+            //         date = DateTime.Parse(line);
+            //         AddEntry(new Entry { Prompt = prompt, Response = response, Date = date });
+            //         prompt = null;
+            //         response = null;
+            //         date = DateTime.MinValue;
+            //     }
+//             // }
+//         }
+//     }
+// }
 
 }

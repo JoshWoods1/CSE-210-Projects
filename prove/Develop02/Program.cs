@@ -28,10 +28,10 @@ public class Program
             {
                 case 1:
                     Prompt randomPrompt = _prompt[new Random().Next(_prompt.Count)];
-                    journal.AddEntry(randomPrompt, "Today was good because...");
+                    journal.AddEntry(entry);
                     break;
                 case 2:
-                    journal.DisplayEntries();
+                    journal.Display();
                     break;
                 case 3:
                     Console.WriteLine("What is the filename");

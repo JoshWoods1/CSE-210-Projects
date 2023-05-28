@@ -1,6 +1,7 @@
+using System;
 public class Prompt 
 {
-    public string[] _prompt = 
+    public static string[] _prompt = 
     {
         "What was the best part of your day?",
         "How did your day make you feel?",
@@ -8,11 +9,25 @@ public class Prompt
         "What about today was special?",
         "If you could have done anything you wanted today, what would you have done?"
     };
-    public List<Prompt> randomPrompt = new List<Prompt>();
+    public List<string> _randomPrompt = new List<string>(_prompt);
+    public Prompt()
+    {
 
-    public void GetPrompt()
+    }
+    public void Display()
     {
         var random = new Random();
-        var randomNumber = random.Next(0,randomPrompt.Count);
+        int index = random.Next(_randomPrompt.Count);
+        string randomPrompt = _randomPrompt[index];
+        Console.WriteLine($"{randomPrompt}");
+    }
+
+    public string GetPrompt()
+    {
+        var random = new Random();
+        int index = random.Next(_randomPrompt.Count);
+        string prompt = _randomPrompt[index];
+
+        return prompt;
     }
 }
