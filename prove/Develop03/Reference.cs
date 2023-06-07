@@ -24,11 +24,11 @@ public class Reference
     { 
         if (_lastVerse != -1)
         {
-        Console.WriteLine($"{_chapter}:{_firstVerse}-{_lastVerse}");
+        Console.WriteLine($"{_book} {_chapter}:{_firstVerse}-{_lastVerse}");
         }
         else
         {
-            Console.WriteLine($"{_chapter}:{_firstVerse}");
+            Console.WriteLine($"{_book} {_chapter}:{_firstVerse}");
         }
     }
 }

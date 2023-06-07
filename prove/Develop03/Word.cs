@@ -23,11 +23,20 @@ public class Word
     {
         if (_isHidden == true)
         {
-            Console.WriteLine("____");
+            for (int i = 0; i < _word.Count(); i++)
+        {
+            Console.Write("_");
+        }
+        Console.Write(" ");
         }
         else {
-            Console.WriteLine($"{_word}");
+            Console.Write($"{_word} ");
         }
+    }
+
+    public bool GetIsHidden()
+    {
+        return _isHidden;
     }
     
 }
