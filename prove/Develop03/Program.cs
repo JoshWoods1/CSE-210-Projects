@@ -11,15 +11,14 @@ class Program
 
         Scripture scripture = new Scripture("Trust in the Lord with all thine heart and lean not unto thine own understanding. In all thy ways acknowledge Him, and He shall direct thy paths.", Proverbs);
 
-        while (scripture.CompletelyHidden() == false || response != "quit")
+        while (!scripture.CompletelyHidden() && response != "quit")
         {
-        // Console.Clear();
-        Proverbs.Display();
+        Console.Clear();
+        Proverbs.Display(); 
         scripture.Display();
 
         scripture.HideWords(); 
         response = Console.ReadLine();
-        Console.Write(response);
 
         }
 
