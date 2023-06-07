@@ -4,18 +4,13 @@ public class Entry{
 
     public string _date;
 
-    public string _text;
+    public string _response;
 
-    public Entry()
+    public Entry(string prompt, string date, string response)
     {        
+        _prompt = prompt;
+        _date = date;
+        _response = response;
     }
 
-    public void Display()
-    {
-        Console.WriteLine($"Date:{_date}");
-        Console.WriteLine($"Prompt:{_prompt}");
-        Console.WriteLine($"Entry:{_text}");
-
-
-    }
 }

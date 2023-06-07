@@ -2,88 +2,45 @@ using System.IO;
 
 public class Journal
 {
-    public List<Entry> _Entries = new List<Entry>();
-    private string _fileName;
+    public List<Entry> _entries = new List<Entry>();
+    public List<string> _prompts;
+    private Random random;
 
     public Journal()
     {
-    }
-
-    public void AddEntry(Entry entry)
-    {
-        _Entries.Add(entry);
-    }
-     public void Display()
-    {
-        Console.WriteLine("---------------------------");
-    foreach(Entry entry in _Entries)
-    {
-        entry.Display();
-    }
-        Console.WriteLine("---------------------------");
-    }
-
-    public void SaveJournal(string filename)
-    {
-        using (StreamWriter writer = new StreamWriter(filename))
-            foreach(Entry entry in _Entries)
-            {
-                writer.WriteLine($"{entry._date}|{entry._prompt}|{entry._text}");
-            }
-    }
-    public void LoadJournal()
-    {
-        Console.WriteLine("Please enter a filename:");
-        string filename = Console.ReadLine();
-        string[] lines = File.ReadAllLines(filename);
-        List<Entry> loadedEntries = new List<Entry>();
-
-        foreach (string line in lines)
+        _entries = new List<Entry>();
+        _prompts = new List<string>()
         {
-            string[] parts = line.Split("|");
-
-            string date =  parts[0];
-            string promptText = parts[1];
-            string text = parts[2];
-
-            Prompt prompt = new Prompt();
-            Entry entry = new Entry();
-            loadedEntries.Add(entry);
-            _Entries = loadedEntries;
-        }
+            "Who was the most interesting person I interacted with today?",
+            "What was the best part of my day?",
+            "How did I see the hand of the Lord in my life today?",
+            "What was the strongest emotion I felt today?",
+            "If I had one thing I could do over today, what would it be?"
+        };
+        random = new Random();
     }
-    // public void LoadFromFile(string filename)
-    // {
-    //     _Entries.Clear();
+     public string GetRandomPrompt()
+    {
+        int index = random.Next(_prompts.Count);
+        return _prompts[index];
+    }
 
-    //     using (StreamReader reader = new StreamReader(filename))
-    //     {
-    //         string line;
-    //         string prompt = null;
-    //         string response = null;
-    //         DateTime date = DateTime.MinValue;
+    
+    public void AddEntry(string response)
+    {
+        string date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        string prompt = GetRandomPrompt();
+        Entry entry = new Entry(date, prompt, response);
+        _entries.Add(entry);
+    }
 
-    //         while ((line = reader.ReadLine()) != null)
-    //         {
-    //             if (prompt == null)
-    //             {
-    //                 prompt = line;
-    //             }
-    //             else if (response == null)
-    //             {
-    //                 response = line;
-    //             }
-    //             else
-            //     {
-            //         date = DateTime.Parse(line);
-            //         AddEntry(new Entry { Prompt = prompt, Response = response, Date = date });
-            //         prompt = null;
-            //         response = null;
-            //         date = DateTime.MinValue;
-            //     }
-//             // }
-//         }
-//     }
-// }
+    public List<Entry> GetEntries()
+    {
+        return _entries;
+    }
 
+     public void ReplaceEntries(List<Entry> newEntries)
+    {
+        _entries = newEntries;
+    }
 }
