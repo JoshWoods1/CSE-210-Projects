@@ -41,11 +41,9 @@ public class Scripture
             {
                 return false;
             }
-            else if (word.GetIsHidden() != false)
-            {
-                return true;
-            }
+             
         }
+        
         return true;
     }
     
