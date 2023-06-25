@@ -4,22 +4,21 @@ public class Breathing : Activity
     {
         _name = "breathing";
 
-        _description = "Do breathing stuff";
+        _description = "This activity will help you relax by controlling your breathing. Clear your mind and focus on the program.";
     }
 
     public void DoBreathingActivity()
     {
         Intro();
-
-        for (int i = 0; i < _duration / 6; i++)
+        Console.WriteLine("Get Ready...");
+        Animation(5);
+        for (int i = 0; i < _duration / 10; i++)
         {
             Console.WriteLine("Breathe in...");
-            Thread.Sleep(3000);
+            Countdown();
             Console.WriteLine("Breathe Out...");
-            Thread.Sleep(3000);
+            Countdown();
         }
-        Animation(5);
-
         Outro();
     }
 }

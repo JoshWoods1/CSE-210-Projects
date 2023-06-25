@@ -3,25 +3,19 @@ public class Activity
     protected string _name;
     protected string _description;
     protected int _duration;
-    protected string _startingMessage;
-    protected string _endingMessage;
-
-    // public Activity(string name, string desc, int dur){
-    //     _name = name;
-    //     _description = desc;
-    //     _duration = dur;
-    // }
 
     public void Intro()
     {
-        Console.WriteLine($"Welcome to the {_name} activity. \n {_description} \n  How long would you like the duration to be?");
+        Console.WriteLine($"Welcome to the {_name} activity. \n\n{_description} \n \nHow long would you like the duration to be? (In seconds)");
         _duration = int.Parse(Console.ReadLine());
 
     }
 
     public void Outro()
     {
-        Console.WriteLine($"{_endingMessage}");
+        Animation(3);
+        Console.WriteLine("Well Done!");
+        Console.WriteLine($"You have completed {_duration} seconds of the {_name} activity!");
     }
     public void Animation(int length)
     {
@@ -49,8 +43,16 @@ public class Activity
     }
     public void Countdown()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 1; i++)
         {
+             Console.Write("5");
+            Thread.Sleep(1000); 
+            Console.Write("\b \b");
+
+            Console.Write("4");
+            Thread.Sleep(1000);
+            Console.Write("\b \b");
+            
             Console.Write("3");
             Thread.Sleep(1000);
 
@@ -62,6 +64,10 @@ public class Activity
             Console.Write("\b \b");
             Console.Write("1");
             Thread.Sleep(1000);
+            
+            Console.Clear();
+
+
         }
 
     }
