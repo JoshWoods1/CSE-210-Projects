@@ -13,4 +13,8 @@ public class Eternal : Goal
     {
         Console.WriteLine($"[ ] {_name} ({_description})");
     }
+    public override string DisplayToFile()
+    {
+        return $"Eternal Goal: {_name}, {_description}, {_points}";
+    }
 }

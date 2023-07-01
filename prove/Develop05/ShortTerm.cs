@@ -20,8 +20,8 @@ public class ShortTerm : Goal
         }
     }
 
-    public override void DisplayToFile()
+    public override string DisplayToFile()
     {
-        Console.WriteLine($"");
+        return $"Simple Goal: {_name}, {_description}, {_points}, {_isFinished}";
     }
 }

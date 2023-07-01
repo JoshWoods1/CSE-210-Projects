@@ -11,9 +11,9 @@ public class Goal
 
     }
 
-    public virtual void DisplayToFile()
+    public virtual string  DisplayToFile()
     {
-
+        return "";
     }
 
 }

@@ -7,12 +7,12 @@ public void Display()
 {
     while (true)
     {
-        Console.WriteLine("1: Create a new goal\n2: List goals\n3: Save Goals\n 4: Load Goals\n 5: Record Event");
+        Console.WriteLine("1: Create a new goal\n2: List goals\n3: Save Goals\n4: Load Goals\n5: Record Event");
         string response = Console.ReadLine();
 
         if (response == "1")
         {
-            Console.WriteLine("1: Simple Goal\n 2: Eternal Goal\n 3: Checklist Goal");
+            Console.WriteLine("1: Simple Goal\n2: Eternal Goal\n3: Checklist Goal");
             string gresponse = Console.ReadLine();
             if (gresponse == "1")
             {
@@ -72,9 +72,33 @@ public void Display()
             string filename = Console.ReadLine();
             using (StreamWriter outputFile = new StreamWriter(filename))
             {
-                for
+                foreach (Goal goal in _goals)
+                {
+                    outputFile.WriteLine(goal.DisplayToFile());
+                }
             }
+        }
+
+        if (response == "4")
+        {
+            Console.WriteLine("What is the name of the file?");
+            string filename = Console.ReadLine();
+            
+            string line;
+            using (StreamReader reader = new StreamReader(filename))
+            {
+                line = reader.ReadLine();
+
+                while (line != null)
+                {
+                    Console.WriteLine(line);
+                    line = reader.ReadLine();
+                }
+            }
+
+        
         }
     }
 }
+
 }

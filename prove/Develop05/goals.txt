@@ -1,0 +1,2 @@
+Checklist Goal: brush teeth, hygeine,40, 50, 2, 0 
+Simple Goal: do homework, get good grades, 100, False

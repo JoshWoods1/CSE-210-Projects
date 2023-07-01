@@ -28,8 +28,8 @@ public Checklist(string name, int points, bool isFisnished, string description, 
         }
     }
 
-    public override void DisplayToFile()
+    public override string DisplayToFile()
     {
-        Console.WriteLine($"Checklist Goal: {_name}, {_description},{_points}, {_bonusPoints}, {_amountNeeded}, {_timesCompleted} ");
+        return $"Checklist Goal: {_name}, {_description},{_points}, {_bonusPoints}, {_amountNeeded}, {_timesCompleted} ";
     }
 }
