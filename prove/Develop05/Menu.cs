@@ -1,7 +1,7 @@
 public class Menu 
 {
     private List<Goal> _goals = new List<Goal>();
-
+    int score = 0;
 
 public void Display()
 {
@@ -84,19 +84,65 @@ public void Display()
             Console.WriteLine("What is the name of the file?");
             string filename = Console.ReadLine();
             
-            string line;
-            using (StreamReader reader = new StreamReader(filename))
+            string[] lines = System.IO.File.ReadAllLines(filename);
+            
+            foreach (string line in lines)
             {
-                line = reader.ReadLine();
+                string[] parts = line.Split(":");
+                string[] cparts = parts[1].Split(",");
 
-                while (line != null)
+                if (parts[0] == "Checklist Goal")
                 {
-                    Console.WriteLine(line);
-                    line = reader.ReadLine();
+                    string _name = cparts[0];
+                    string _description = cparts[1];
+                    int _points = int.Parse(cparts[2]);
+                    int _bonusPoints = int.Parse(cparts[3]);
+                    int _amountNeeded = int.Parse(cparts[4]);
+                    int _timesCompleted = int.Parse(cparts[5]);
+                    bool _isFinished = bool.Parse(cparts[6]);
+
+                    Checklist checklist = new Checklist(_name, _points, _isFinished, _description, _timesCompleted, _amountNeeded, _bonusPoints);
+                    _goals.Add(checklist);
+                }
+                if (parts[0] == "Simple Goal")
+                {
+                    string _name = cparts[0];
+                    string _description = cparts[1];
+                    int _points = int.Parse(cparts[2]);
+                    bool _isFinished = bool.Parse(cparts[3]);
+
+                    ShortTerm simple = new ShortTerm(_name, _points, _isFinished, _description);
+                    _goals.Add(simple);
+                }
+                if (parts[0] == "Eternal Goal")
+                {
+                    string _name = cparts[0];
+                    string _description = cparts[1];
+                    int _points = int.Parse(cparts[2]);
+
+                    Eternal eternal = new Eternal(_name, _points, _description);
+                    _goals.Add(eternal);
                 }
             }
+        }
+        if (response == "5")
+        {
+            int counter = 0;
+            Console.WriteLine("The goals are: \n");
+            foreach (Goal goal in _goals)
+            {
+                Console.Write($"{counter + 1}: " );
+                goal.Display();
+                counter += 1;
+            }
+            Console.WriteLine("Which goal would you like to mark?");
+            int answer = int.Parse(Console.ReadLine());
 
-        
+            score += _goals[answer - 1].GivePoints();
+            Console.WriteLine($"You received {_goals[answer - 1].GivePoints()} points!\n");
+            
+            _goals[answer - 1 ].Complete();
+            Console.WriteLine($"You have {score} points");
         }
     }
 }
