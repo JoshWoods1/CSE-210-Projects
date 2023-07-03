@@ -30,6 +30,42 @@ public Checklist(string name, int points, bool isFisnished, string description, 
 
     public override string DisplayToFile()
     {
-        return $"Checklist Goal: {_name}, {_description},{_points}, {_bonusPoints}, {_amountNeeded}, {_timesCompleted} ";
+        return $"Checklist Goal: {_name}, {_description},{_points}, {_bonusPoints}, {_amountNeeded}, {_timesCompleted}, {_isFinished} ";
+    }
+
+    public override void Complete()
+    {
+        if (_timesCompleted == _amountNeeded)
+        {
+            _isFinished = true;
+        }
+        else
+        {
+            _timesCompleted += 1;
+        }
+    }
+
+    public override int GivePoints()
+    {
+        if (_isFinished == false)
+        {
+        if (_timesCompleted == _amountNeeded)
+        {
+            return _bonusPoints + _points;
+        }
+        else
+        {
+            return _points;
+        }
+        }
+        else
+        {
+            Console.WriteLine("Goal already completed");
+            return 0;
+        }
+    }
+    public override string Point(int _points)
+    {
+        return $"You earned {_points} points!";
     }
 }

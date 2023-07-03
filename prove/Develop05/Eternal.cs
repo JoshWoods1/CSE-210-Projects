@@ -17,4 +17,14 @@ public class Eternal : Goal
     {
         return $"Eternal Goal: {_name}, {_description}, {_points}";
     }
+
+    public override int GivePoints()
+    {
+        return _points;
+    }
+
+    public override string Point(int _points)
+    {
+        return $"You earned {_points} points!";
+    }
 }

@@ -24,4 +24,28 @@ public class ShortTerm : Goal
     {
         return $"Simple Goal: {_name}, {_description}, {_points}, {_isFinished}";
     }
+
+    public override void Complete()
+    {
+        _isFinished = true;
+    }
+
+    public override int GivePoints()
+    {
+        if (_isFinished == false)
+       {
+        return _points;
+        }
+       else 
+       {
+        Console.WriteLine("Goal is already complete.");
+        return 0;
+       }
+
+    }
+    public override string Point(int _points)
+    {
+        return $"You earned {_points} points!";
+    }
+
 }

@@ -16,4 +16,17 @@ public class Goal
         return "";
     }
 
+    public virtual void Complete()
+    {
+
+    }
+
+    public virtual int GivePoints()
+    {
+        return 0;
+    }
+    public virtual string Point(int _points)
+    {
+        return $"You earned {_points} points!";
+    }
 }
